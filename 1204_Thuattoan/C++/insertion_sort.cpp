@@ -31,7 +31,7 @@ int main() {
     cout << "Insertion Sort" << endl;
     // Initialize a new array 
     int arr[] = {30, 10, 5, 15, 25, 20};
-    int arrSize = sizeof(arr) / sizeof(arr[0]);
+    int arrSize = sizeof(arr) / sizeof(arr[0]); //Dùng để tính bytes, int là 4 bytes và arr là 6 số bao gồm4
     // Display the initial array 
     cout << "Initial array: " << endl;
     for (int i = 0; i < arrSize; i++) {

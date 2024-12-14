@@ -12,13 +12,7 @@ void themdau(double x, Pnode& H)
     p -> next = H;
     H = p;
 }
-void themdau(double x, Pnode& H) {
-    Pnode P;
-    p = new node
-    p -> data = x;
-    p -> next = H;
-    H = p;
-}
+
 void themcuoi(double x, Pnode& H) {
     if (H == NULL) {
         themdau(x, H);

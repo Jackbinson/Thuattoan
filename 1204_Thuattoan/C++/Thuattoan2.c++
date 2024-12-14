@@ -40,7 +40,7 @@ stack_int::~stack_int()
 void stack_int::push(int x)
 {
     Pnode p;
-    p = new node;
+    p = new Node;
     p -> data = x;
     p -> next = H;
     H = p;

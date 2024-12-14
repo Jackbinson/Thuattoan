@@ -1,72 +1,79 @@
 struct node {
     int data;
     node *next;
-
 };
+
 typedef node* Pnode;
+
 struct set {
     Pnode H;
-    stack_int();
-    ~stack_int();
-    void nhap(&set);
-    void xuat(set);
-    void them(int, set);
-    set giao(set, set);
-    set hieu(set, set);
-};
-set::set() {
-    H = NULL;
-}
-set::~set() {
-    while(H != NULL) {
-        Pnode p;
-        p = H;
-        H = H -> next;
-        delete p;
-
+    set() { H = NULL; }
+    ~set() {
+        while(H != NULL) {
+            Pnode p = H;
+            H = H->next;
+            delete p;
+        }
     }
-}
-void them(int x, set& A) {
-    Pnode p;
-    p = new node
-    p -> data = x;
-    p -> next = A.H;
+    void them(int, set&);
+    bool thuoc(int, set);
+    void nhap(set&);
+    void xuat(set);
+    set giao(set, set);
+};
+
+void set::them(int x, set& A) {
+    Pnode p = new node;
+    p->data = x;
+    p->next = A.H;
     A.H = p;
 }
-void nhap(int x, set A, set B) 
-void giao(set A, set B) {
-    set C;
-    Pnode p;
-    p = A.H;
-    while (p != NULL)
-    {
-        if(thuoc(p->data, B))
-        them(p->data,R);
 
-    }
-    if (p = NULL)
-}
-set_int hop(set_int A, set_int B) {
-    set_int R;
-    Pnode p;
-    p = A.H;
+bool set::thuoc(int x, set A) {
+    Pnode p = A.H;
     while (p != NULL) {
-        them(p->data,R)
+        if (p->data == x) return true;
         p = p->next;
     }
-    p = B.H;
-    while(p != NULL) {
-        if (!thuoc(p->data,R))
-            them(p->data,R);
-            p = p -> next;
-    }
-    return R;
+    return false;
 }
-void main()
-{
-    set A,B,C;
-    nhap(A);
-    nhap(B);
-    C = giao(A,B);
-    xuat(C)
+
+set set::giao(set A, set B) {
+    set C;
+    Pnode p = A.H;
+    while (p != NULL) {
+        if (thuoc(p->data, B)) {
+            them(p->data, C);
+        }
+        p = p->next;
+    }
+    return C;
+}
+
+void set::nhap(set& A) {
+    int x;
+    while (cin >> x) { // Assuming input until a non-integer
+        them(x, A);
+    }
+}
+
+void set::xuat(set A) {
+    Pnode p = A.H;
+    while (p != NULL) {
+        cout << p->data << " ";
+        p = p->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    set A, B, C;
+    cout << "Enter elements for set A (non-integer to stop): ";
+    A.nhap(A);
+    cout << "Enter elements for set B (non-integer to stop): ";
+    B.nhap(B);
+    C = A.giao(A, B);
+    cout << "Intersection of sets A and B: ";
+    C.xuat(C);
+    return 0;
 }
